@@ -1,13 +1,11 @@
 // got inspiration from https://github.com/sethyuan/streamline-express/blob/master/lib/streamline-express.js
-import { run } from 'f-promise';
+import { run, eventHandler } from 'f-promise';
 import * as express from 'express';
 
 function wrap(val: any): any {
     if (Array.isArray(val)) return val.map(wrap);
     else if (typeof val !== 'function') return val;
-    return function (this: any, ...args: any[]) {
-        run(() => val.apply(this, args)).catch(err => { throw err });
-    };
+    return eventHandler(val);
 }
 
 function patch(app: any, method: string) {
