@@ -1,4 +1,4 @@
-# f-mocha
+# f-express
 
 Express wrapper for f-promise
 
