@@ -1,5 +1,5 @@
 // got inspiration from https://github.com/sethyuan/streamline-express/blob/master/lib/streamline-express.js
-import { run, eventHandler } from 'f-promise';
+import { eventHandler } from 'f-promise';
 import * as express from 'express';
 
 function wrap(val: any): any {
@@ -15,11 +15,11 @@ function patch(app: any, method: string) {
             return original.apply(this, wrap(args));
         }
     }
-};
+}
 
 export = function (): express.Express {
     const app = express();
-    var methods = <string[]>require("methods").concat(['all', 'use', 'param']);
+    const methods = <string[]>require("methods").concat(['all', 'use', 'param']);
     methods.forEach(m => patch(app, m));
     return app;
 }
