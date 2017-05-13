@@ -2,7 +2,7 @@
 
 Express wrapper for f-promise
 
-`f-exporess` is a companion package for [`f-promise`](https://github.com/Sage/f-promise). 
+`f-express` is a companion package for [`f-promise`](https://github.com/Sage/f-promise). 
 
 ## Installation
 
