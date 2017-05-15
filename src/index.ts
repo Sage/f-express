@@ -11,7 +11,8 @@ function wrap(val: any): any {
 function patch(app: any, method: string) {
     if (app[method]) {
         const original = app[method];
-        app[method] = function (this: any, ...args: any[]) {
+        app[method] = function (this: any) {
+            const args = Array.prototype.slice.call(arguments);
             return original.apply(this, wrap(args));
         }
     }
