@@ -11,7 +11,11 @@ function wrap(val: any): any {
 function patch(app: any, method: string) {
     if (app[method]) {
         const original = app[method];
-        app[method] = function (this: any, ...args: any[]) {
+        app[method] = function (this: any) {
+            let args: any[] = [];
+            for (let i = 0; i < arguments.length; i++) {
+                args[i] = arguments[i];
+            }
             return original.apply(this, wrap(args));
         }
     }

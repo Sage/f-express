@@ -7,7 +7,7 @@
     "name": "Bruno Jouhier",
     "email": "bruno.jouhier@sage.com"
   },
-  "main": "build/index.js",
+  "main": "build/src/index.js",
   "typings": "build/index.d.ts",
   "engines": {
     "node": ">=6.0.0"
