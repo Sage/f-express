@@ -36,6 +36,7 @@
   },
   "scripts": {
     "prepublish": "node_modules/typescript/bin/tsc",
-    "test": "node_modules/mocha/bin/mocha build/test"
+    "test": "node_modules/mocha/bin/mocha build/test",
+    "lint": "tslint -e 'node_modules/**' -p ."
   }
 }
