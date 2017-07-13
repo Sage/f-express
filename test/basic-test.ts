@@ -1,11 +1,11 @@
-import { wait, run } from 'f-promise';
+import { run, wait } from 'f-promise';
 import express = require('express');
-import { Express, IRouterHandler, Application, Router, Request, Response, NextFunction } from '../src';
+import { Application, Express, IRouterHandler, NextFunction, Request, Response, Router } from '../src';
 import fexpress = require('../src');
 import request = require('supertest');
 
 function delay(x: string) {
-	wait(cb => setTimeout(cb, 0));
+	wait<void>(cb => setTimeout(cb, 0));
 	return x;
 }
 
@@ -14,7 +14,7 @@ function test(name: string, fn: (app: Express) => (body: express.RequestHandler)
 		it('should work with f-express', function (done) {
 			const app = fexpress();
 			fn(app)((req, res) => {
-				res.send(delay("hello"));
+				res.send(delay('hello'));
 			});
 			request(app)
 				.get('/')
@@ -25,7 +25,7 @@ function test(name: string, fn: (app: Express) => (body: express.RequestHandler)
 			const app = express();
 			fn(app)((req, res) => {
 				try {
-					res.send(delay("hello"));
+					res.send(delay('hello'));
 				} catch (ex) {
 					res.status(500).send(ex.message);
 				}
@@ -49,7 +49,7 @@ test('router.get', app => {
 test('simple middleware chain', app => {
 	return (handler: express.RequestHandler) => {
 		app.get('/', (req, res, next) => next(), handler);
-	}
+	};
 });
 
 test('middleware chain with one calling next inside a promise resolve', app => {
@@ -57,7 +57,7 @@ test('middleware chain with one calling next inside a promise resolve', app => {
 		app.get('/', function (req, res, next) {
 			Promise.resolve().then(next);
 		}, handler);
-	}
+	};
 });
 
 describe('error handler middleware', () => {
@@ -65,7 +65,7 @@ describe('error handler middleware', () => {
 		const app: Application = fexpress();
 
 		app.get('/', function (req, res, next) {
-			next(new Error("testing"));
+			next(new Error('testing'));
 		});
 
 		app.use(function (err: Error, req: Request, res: Response, next: NextFunction) {

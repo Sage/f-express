@@ -1,6 +1,6 @@
 // got inspiration from https://github.com/sethyuan/streamline-express/blob/master/lib/streamline-express.js
-import { eventHandler } from 'f-promise';
 import * as express from 'express';
+import { eventHandler } from 'f-promise';
 
 function wrap(val: any): any {
 	if (Array.isArray(val)) return val.map(wrap);
@@ -14,13 +14,13 @@ function patch(app: any, method: string) {
 		app[method] = function (this: any) {
 			const args = Array.prototype.slice.call(arguments);
 			return original.apply(this, wrap(args));
-		}
+		};
 	}
 }
 
 function e(): express.Express {
 	const app = express();
-	const methods = <string[]>require("methods").concat(['all', 'use', 'param']);
+	const methods = <string[]>require('methods').concat(['all', 'use', 'param']);
 	methods.forEach(m => patch(app, m));
 	return app;
 }
