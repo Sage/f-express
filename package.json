@@ -1,6 +1,6 @@
 {
   "name": "f-express",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "license": "MIT",
   "description": "express wrapper for f-promise",
   "author": {
