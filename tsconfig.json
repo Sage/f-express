@@ -9,7 +9,7 @@
         "noImplicitThis": true,
         "noImplicitReturns": true,
         "strictNullChecks": true,
-        "declaration": true
+        "declaration": false
     },
     "exclude": [
         "node_modules",
