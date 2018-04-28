@@ -10,7 +10,8 @@
   "main": "build/index.js",
   "typings": "build/index.d.ts",
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=6.0.0",
+    "npm": ">=5.0.0"
   },
   "dependencies": {
     "@types/express": "^4.0.35",
@@ -37,7 +38,7 @@
   },
   "scripts": {
     "prepare": "tsc",
-    "test": "node_modules/mocha/bin/mocha build/test",
+    "test": "mocha build/test",
     "lint": "tslint -e 'node_modules/**' -p ."
   }
 }
