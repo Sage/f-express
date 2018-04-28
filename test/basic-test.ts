@@ -9,9 +9,16 @@ function delay(x: string) {
 	return x;
 }
 
+let silent = false;
+// do not show unhandled rejection error
+process.on('unhandledRejection', (error: Error) => {
+	if (!silent) console.error(error.stack);
+});
+
 function test(name: string, fn: (app: Express) => (body: express.RequestHandler) => any) {
 	describe(name, function () {
 		it('should work with f-express', function (done) {
+			silent = false;
 			const app = fexpress();
 			fn(app)((req, res) => {
 				res.send(delay('hello'));
@@ -22,6 +29,7 @@ function test(name: string, fn: (app: Express) => (body: express.RequestHandler)
 		});
 
 		it('should fail with express', function (done) {
+			silent = true;
 			const app = express();
 			fn(app)((req, res) => {
 				try {
