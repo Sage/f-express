@@ -10,8 +10,7 @@
   "main": "build/index.js",
   "typings": "build/index.d.ts",
   "engines": {
-    "node": ">=6.0.0",
-    "npm": ">=5.0.0"
+    "node": ">=6.0.0"
   },
   "dependencies": {
     "@types/express": "^4.0.35",
