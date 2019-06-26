@@ -40,7 +40,7 @@ function test(name: string, fn: (app: Express) => (body: express.RequestHandler)
             });
             request(app)
                 .get('/')
-                .expect(500, /yield\(\) called with no fiber/, done);
+                .expect(500, /cannot wait: no fiber/, done);
         });
     });
 }
