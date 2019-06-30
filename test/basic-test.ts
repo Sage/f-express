@@ -1,8 +1,8 @@
-import { run, wait } from 'f-promise';
 import express = require('express');
+import { run, wait } from 'f-promise';
+import request = require('supertest');
 import { Application, Express, IRouterHandler, NextFunction, Request, Response, Router } from '../src';
 import fexpress = require('../src');
-import request = require('supertest');
 
 function delay(x: string) {
     wait<void>(cb => setTimeout(cb, 0));
