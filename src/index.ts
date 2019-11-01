@@ -35,7 +35,7 @@ namespace e {
     export interface Express extends express.Express {}
     export interface Handler extends express.Handler {}
     export interface IRoute extends express.IRoute {}
-    export interface IRouter<T> extends express.IRouter<T> {}
+    export interface IRouter extends express.IRouter {}
     export interface IRouterHandler<T> extends express.IRouterHandler<T> {}
     export interface IRouterMatcher<T> extends express.IRouterMatcher<T> {}
     export interface MediaType extends express.MediaType {}
