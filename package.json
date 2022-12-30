@@ -22,7 +22,7 @@
         "@types/mocha": "^5.2.7",
         "@types/node": "^12.12.5",
         "@types/supertest": "^2.0.8",
-        "mocha": "^6.2.2",
+        "mocha": "^10.2.0",
         "supertest": "^4.0.2",
         "tslint": "^5.20.0",
         "typescript": "^3.6.4"
